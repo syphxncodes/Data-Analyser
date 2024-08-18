@@ -6,17 +6,24 @@ import matplotlib.pyplot as plt
 
 
 df=nullvalues()
+
 print("Null values have been removed:",df.isnull().sum())
 print("Now, let us see if any outliers are there or not")
 def outliers():
     for col in df.columns:
         sns.boxplot(x=col,data=df)
         plt.show()
-print("This is the correlation matrix for the given dataset:")
-#matrix=df.corr()
-#sns.heatmap(matrix)
 
-selection=input("Do you want to view any statistics? y/n")
+outliers()
+print("U will be getting the option to scale the data at a later stage, this is just for an analysis.")
+
+
+print("This is the correlation matrix for the given dataset:")
+matrix=df.corr()
+sns.heatmap(matrix)
+plt.show()
+
+selection=input("Do you want to view any statistics?(y/n)")
 
 if selection=="y":
     print('''Graphs available: 
@@ -26,7 +33,8 @@ if selection=="y":
           4)KDE
           5)Bar Plot
           6)Pair Plot
-          7)Joint Plot''')
+          7)Joint Plot
+          8)Reg Plot''')
     selection_1=input("Please type in what u require:")
     if selection_1 == "Scatterplot":
         x=input("Enter x column:")
@@ -70,6 +78,11 @@ if selection=="y":
         sns.jointplot(x=x,y=y,data=df)
         plt.show()
 
+    elif selection_1 == "Reg Plot":
+        x=input("Enter x column:")
+        y=input("Enter y column:")
+        sns.regplot(x=x,y=y,data=df)
+        plt.show()
+    else:
+        print("No such option in the given list. Please recheck the spelling mistake (case sensitive)")
 
-#outliers()
-print("U will be getting the option to scale the data at a later stage, this is just for an analysis.")
