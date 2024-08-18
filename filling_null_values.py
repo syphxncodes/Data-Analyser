@@ -14,6 +14,8 @@ def nullvalues():
     print("1. Mean")
     print("2. Mode")
     print("3. Median")
+    print("4. Interpolation")
+    print("5. Remove the null values")
     selected_option=input("Type your required way to fill the null values:")
     if selected_option=="Mean":
         for col in df.columns:
@@ -39,6 +41,18 @@ def nullvalues():
                 df2= df.apply(lambda col: col.fillna(col.mode()[0]))
             
         return df2
+    elif selected_option=="Interpolation":
+        for col in df.columns:
+            if col==x:
+                continue
+            else:
+                df.interpolate(method="linear",inplace=True)
+        return df
+    elif selected_option == "Remove the null values":
+        df.dropna(axis=1,inplace=True)
+        return df
+
+    #print("Done with filling null values with the required selection")
 
 df1=nullvalues()
 print(df1.isnull().sum())

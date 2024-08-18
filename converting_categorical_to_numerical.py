@@ -39,6 +39,8 @@ def converting_categorical():
             df1=frequency_encoder(df,i)
         return df1
         #print("this is the information for the frequency encoded dataset:",df1.head())
+    
+    #print("Done with converting categorical variables to numerical")
 
 
 
