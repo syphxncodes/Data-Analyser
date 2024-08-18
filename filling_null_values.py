@@ -54,5 +54,5 @@ def nullvalues():
 
     #print("Done with filling null values with the required selection")
 
-df1=nullvalues()
-print(df1.isnull().sum())
+#df1=nullvalues()
+#print(df1.isnull().sum())
