@@ -51,32 +51,39 @@ def ModelTraining():
                  4)RobustScaler
                  5)Normalizer'''
               )
-        scaling_method=input("Please type the scaling method required:")
-        if scaling_method == "StandardScaler":
-            standardscaler=StandardScaler()
-            xtrain=standardscaler.fit_transform(xtrain)
-            xtest=standardscaler.transform(xtest)
-        elif scaling_method == "MinMaxScaler":
-            minmax=MinMaxScaler()
-            xtrain=minmax.fit_transform(xtrain)
-            xtest=minmax.transform(xtest)
-        elif scaling_method == "MaxAbsScaler":
-            maxabs=MaxAbsScaler()
-            xtrain=maxabs.fit_transform(xtrain)
-            xtest=maxabs.transform(xtest)
-        elif scaling_method == "RobustScaler":
-            robust=RobustScaler()
-            xtrain=robust.fit_transform(xtrain)
-            xtest=robust.transform(xtest)
-        elif scaling_method == "Normalizer":
-            normalizer=Normalizer()
-            xtrain=normalizer.fit_transform(xtrain)
-            xtest=normalizer.transform(xtest)
-        else:
-            print("This is not in the options, please check if any spelling mistake!")
+        while True:
+            scaling_method=input("Please type the scaling method required:")
+            if scaling_method == "StandardScaler":
+                standardscaler=StandardScaler()
+                xtrain=standardscaler.fit_transform(xtrain)
+                xtest=standardscaler.transform(xtest)
+                break
+            elif scaling_method == "MinMaxScaler":
+                minmax=MinMaxScaler()
+                xtrain=minmax.fit_transform(xtrain)
+                xtest=minmax.transform(xtest)
+                break
+            elif scaling_method == "MaxAbsScaler":
+                maxabs=MaxAbsScaler()
+                xtrain=maxabs.fit_transform(xtrain)
+                xtest=maxabs.transform(xtest)
+                break
+            elif scaling_method == "RobustScaler":
+                robust=RobustScaler()
+                xtrain=robust.fit_transform(xtrain)
+                xtest=robust.transform(xtest)
+                break
+            elif scaling_method == "Normalizer":
+                normalizer=Normalizer()
+                xtrain=normalizer.fit_transform(xtrain)
+                xtest=normalizer.transform(xtest)
+                break
+            else:
+                print("This is not in the options, please check if any spelling mistake(Retype)!")
+            
     else:
         pass
-    
+
     print(y.unique())
     input1=input("Please type what problem it is based on(Classification or Regression):")
     
