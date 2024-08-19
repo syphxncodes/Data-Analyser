@@ -13,7 +13,7 @@ from sklearn.naive_bayes import GaussianNB
 #import xgboost as xgb
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import AdaBoostClassifier,AdaBoostRegressor
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score,f1_score,r2_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler,RobustScaler,MaxAbsScaler,Normalizer
 from outlier_detection_and_correlation import graphs
@@ -144,17 +144,17 @@ def ModelTraining():
     elif input1 == "Regression":
         print("The defualt metric for regression used is f1-score")
         models1=[LinearRegression(),KNeighborsRegressor(),SVR(),DecisionTreeRegressor(),GradientBoostingRegressor(),RandomForestRegressor(),AdaBoostRegressor()]
-        accuracies={}
+        r2_scores={}
         for i in models1:
             model=i
             model.fit(xtrain,ytrain)
             y_pred=model.predict(xtest)
-            accuracy=accuracy_score(ytest,y_pred)
-            accuracies[model]=accuracy
-        print(accuracies)
-        best_model_name = max(accuracies, key=accuracies.get)
-        best_model_accuracy = accuracies[best_model_name]
+            r2_score1=r2_score(ytest,y_pred)
+            r2_scores[model]=r2_score1
+        print(f1_score)
+        best_model_name = max(r2_scores, key=r2_scores.get)
+        best_model_r2_score =r2_scores[best_model_name]
         print("This is the best model:",best_model_name)
-        print("The best model's accuracy:",best_model_accuracy)
+        print("The best model's accuracy:",best_model_r2_score)
     
 ModelTraining()
