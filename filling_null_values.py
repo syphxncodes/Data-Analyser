@@ -1,4 +1,3 @@
-from main import readfile
 import numpy as np
 import pandas as pd
 from converting_categorical_to_numerical import converting_categorical

@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-from main import readfile
+from Data import readfile
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OrdinalEncoder
 import category_encoders as ce
