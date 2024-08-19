@@ -25,8 +25,9 @@ plt.show()
 
 selection=input("Do you want to view any statistics?(y/n)")
 
-if selection=="y":
-    print('''Graphs available: 
+def graphs():
+    if selection=="y":
+        print('''Graphs available: 
           1)Scatterplot
           2)Line Plot
           3)Histogram
@@ -35,54 +36,54 @@ if selection=="y":
           6)Pair Plot
           7)Joint Plot
           8)Reg Plot''')
-    selection_1=input("Please type in what u require:")
-    if selection_1 == "Scatterplot":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.scatterplot(x=x,y=y,data=df)
-        plt.show()
+        selection_1=input("Please type in what u require:")
+        if selection_1 == "Scatterplot":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.scatterplot(x=x,y=y,data=df)
+            plt.show()
     
-    elif selection_1 == "Line Plot":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.lineplot(x=x,y=y,data=df)
-        plt.show()
+        elif selection_1 == "Line Plot":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.lineplot(x=x,y=y,data=df)
+            plt.show()
     
-    elif selection_1 == "Histogram":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.histplot(x=x,y=y,data=df)
-        plt.show()
+        elif selection_1 == "Histogram":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.histplot(x=x,y=y,data=df)
+            plt.show()
 
-    elif selection_1 == "KDE":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.kdeplot(x=x,y=y,data=df)
-        plt.show()
-    
-    elif selection_1 == "Bar Plot":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.barplot(x=x,y=y,data=df)
-        plt.show()
+        elif selection_1 == "KDE":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.kdeplot(x=x,y=y,data=df)
+            plt.show()
+        
+        elif selection_1 == "Bar Plot":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.barplot(x=x,y=y,data=df)
+            plt.show()
 
-    elif selection_1 == "Pair Plot":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.pairplot(data=df)
-        plt.show()
+        elif selection_1 == "Pair Plot":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.pairplot(data=df)
+            plt.show()
 
-    elif selection_1 == "Joint Plot":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.jointplot(x=x,y=y,data=df)
-        plt.show()
+        elif selection_1 == "Joint Plot":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.jointplot(x=x,y=y,data=df)
+            plt.show()
 
-    elif selection_1 == "Reg Plot":
-        x=input("Enter x column:")
-        y=input("Enter y column:")
-        sns.regplot(x=x,y=y,data=df)
-        plt.show()
-    else:
-        print("No such option in the given list. Please recheck the spelling mistake (case sensitive)")
+        elif selection_1 == "Reg Plot":
+            x=input("Enter x column:")
+            y=input("Enter y column:")
+            sns.regplot(x=x,y=y,data=df)
+            plt.show()
+        else:
+            print("No such option in the given list. Please recheck the spelling mistake (case sensitive)")
 
