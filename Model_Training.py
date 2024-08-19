@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 from filling_null_values import nullvalues
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.linear_model import LogisticRegression
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -13,6 +13,10 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neural_network import MLPClassifier
 from sklearn.ensemble import AdaBoostClassifier
 from sklearn.metrics import accuracy_score
+
+
+
+
 
 df=nullvalues()
 selection=input("Based on the statistics that you viewed, do u want to remove any column(y/n):")
@@ -51,5 +55,46 @@ def ModelTraining():
             accuracy=accuracy_score(ytest,y_pred)
             accuracies[model]=accuracy
         print(accuracies)
+        best_model_name = max(accuracies, key=accuracies.get)
+        best_model_accuracy = accuracies[best_model_name]
+        print("This is the best model:",best_model_name)
+        print("The best model's accuracy:",best_model_accuracy)
 
+        input2=input("Do you want to do a gridsearchCV for better options of model accuracy?(y/n)")
+        if input2 == 'y':
+            print(models)
+            model1=input("Type the model's name that u want to do gridsearchcv on:")
+            if model1 == "LogisticRegression":
+                param_grid = {
+                    'C': [0.1, 1, 10, 100],
+                    'solver': ['newton-cg', 'lbfgs', 'liblinear']
+                }
+                logreg=LogisticRegression(max_iter=100,random_state=42)
+                grid_search = GridSearchCV(logreg, param_grid, cv=5, n_jobs=-1, verbose=1)
+                grid_search.fit(xtrain,ytrain)
+
+                best_logreg=grid_search.best_estimator_
+                print(f"Best Parameters:{grid_search.best_params_}")
+                ypred=best_logreg.predict(xtest)
+                print("This is the best accuracy:",accuracy_score(ytest,ypred))
+            elif model1 == "KNeighborsClassifier":
+                param_grid = {
+                    'n_neighbors': [3, 5, 7, 9],          # Number of neighbors
+                    'weights': ['uniform', 'distance'],    # Weight function used in prediction
+                    'metric': ['euclidean', 'manhattan']   # Distance metric
+                }
+                knn=KNeighborsClassifier()
+                grid_search=GridSearchCV(knn,param_grid, cv=5, n_jobs=-1, verbose=1)
+                grid_search.fit(xtrain,ytrain)
+                best_knn = grid_search.best_estimator_
+                print(f"Best parameters: {grid_search.best_params_}")
+
+                    # Evaluate on the test set
+                y_pred1 = best_knn.predict(xtest)
+                print(accuracy_score(ytest,y_pred1))
+
+
+    elif input1 == "Regression":
+        print("The defualt metric for regression used is f1-score")
+        models=[]
 ModelTraining()
