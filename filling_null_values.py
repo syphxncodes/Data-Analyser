@@ -16,41 +16,44 @@ def nullvalues():
     print("3. Median")
     print("4. Interpolation")
     print("5. Remove the null values")
-    selected_option=input("Type your required way to fill the null values:")
-    if selected_option=="Mean":
-        for col in df.columns:
-            if col==x:
-                continue
-            else:
-                df[col]=df[col].fillna(df[col].mean())
-        return df
-    
-    elif selected_option=="Median":
-        for col in df.columns:
-            if col==x:
-                continue
-            else:
-                df[col]=df[col].fillna(df[col].median())
-        return df
-    
-    elif selected_option=="Mode":
-        for col in df.columns:
-            if col==x:
-                continue
-            else:
-                df2= df.apply(lambda col: col.fillna(col.mode()[0]))
-            
-        return df2
-    elif selected_option=="Interpolation":
-        for col in df.columns:
-            if col==x:
-                continue
-            else:
-                df.interpolate(method="linear",inplace=True)
-        return df
-    elif selected_option == "Remove the null values":
-        df.dropna(axis=1,inplace=True)
-        return df
+    while True:
+        selected_option=input("Type your required way to fill the null values:")
+        if selected_option=="Mean":
+            for col in df.columns:
+                if col==x:
+                    continue
+                else:
+                    df[col]=df[col].fillna(df[col].mean())
+            return df
+        
+        elif selected_option=="Median":
+            for col in df.columns:
+                if col==x:
+                    continue
+                else:
+                    df[col]=df[col].fillna(df[col].median())
+            return df
+        
+        elif selected_option=="Mode":
+            for col in df.columns:
+                if col==x:
+                    continue
+                else:
+                    df2= df.apply(lambda col: col.fillna(col.mode()[0]))
+                
+            return df2
+        elif selected_option=="Interpolation":
+            for col in df.columns:
+                if col==x:
+                    continue
+                else:
+                    df.interpolate(method="linear",inplace=True)
+            return df
+        elif selected_option == "Remove the null values":
+            df.dropna(axis=1,inplace=True)
+            return df
+        else:
+            print("Please retype by looking at the given option (Recheck spelling)")
 
     #print("Done with filling null values with the required selection")
 

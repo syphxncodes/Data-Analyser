@@ -16,10 +16,12 @@ from sklearn.ensemble import AdaBoostClassifier,AdaBoostRegressor
 from sklearn.metrics import accuracy_score
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MinMaxScaler,RobustScaler,MaxAbsScaler,Normalizer
+from outlier_detection_and_correlation import graphs
 
+#selection=input("Do you want to view any statistics?(y/n)")
+df=graphs()
 
-
-df=nullvalues()
+#df=nullvalues()
 selection=input("Based on the statistics that you viewed, do u want to remove any column(y/n):")
 
 if selection == 'y':
