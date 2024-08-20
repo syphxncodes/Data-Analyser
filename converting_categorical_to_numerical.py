@@ -29,13 +29,13 @@ def converting_categorical():
                 df[i] = label_encoder.fit_transform(df[i])
             return df
         
-        elif y == "Ordinal":
+        elif y == "Ordinal Encoding":
             ordinal_encoder=OrdinalEncoder()
             for i in object_columns:
                 df[i]=ordinal_encoder.fit_transform(df[[i]])
             #print(df.info())
             return df
-        elif y == "Frequency":
+        elif y == "Frequency Encoding":
             for i in object_columns:
                 df1=frequency_encoder(df,i)
             return df1
